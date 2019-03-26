@@ -1,13 +1,24 @@
 function love.load()
-  tilemap = {1, 0, 0, 1, 1, 0, 1, 1, 1, 0}
+  tilemap = {
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 1, 1, 1, 1, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+    }
 end
 
 function love.draw()
-  --ipairs let you loop through a table easily
-  --i is the loop iteration, v is the value at position i
-  for i,v in ipairs(tilemap) do
-    if v == 1 then
-      love.graphics.rectangle("fill", i * 25, 100, 25, 25)
+  --done without ipairs
+  --for i=1 through the number of values in tilemap
+  for i=1,#tilemap do
+    --for j through the number of values in the row
+    for j=1,#tilemap[i] do
+      --if the value at row i column j is 1
+      if tilemap[i][j] == 1 then
+        --draw rectangle
+        love.graphics.rectangle("fill", j * 25, i * 25, 25, 25)
+      end
     end
   end
 end
