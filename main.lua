@@ -1,4 +1,8 @@
 function love.load()
+  image = love.graphics.newImage("img/tile.png")
+  width = image:getWidth()
+  height = image:getHeight()
+  
   tilemap = {
     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
     {1, 2, 2, 2, 2, 2, 2, 2, 2, 1},
@@ -23,7 +27,7 @@ function love.draw()
         --set the color based on the tile number
         love.graphics.setColor(colors[tile])
         --draw the tile
-        love.graphics.rectangle("fill", j * 25, i * 25, 25, 25)
+        love.graphics.draw(image, j * width, i * height)
       end
     end
   end
